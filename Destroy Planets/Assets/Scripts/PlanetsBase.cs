@@ -8,10 +8,11 @@ public abstract class PlanetsBase : MonoBehaviour
     public void OnMouseDown()
     {
         EventManager.OnPlanetDestroy.Invoke();
+        UpdateScore();
         Debug.Log("bomb");
     }
 
-    public abstract void UpdateScore(int point);
+    public abstract void UpdateScore();
 
     public abstract void OnCollisionEnter();
 }
