@@ -30,6 +30,6 @@ public class ScoreTextController : MonoBehaviour
     private void UpdateScoreText()
     {
         int point = PlanetsBase.point;
-        ScoreText.text = "Score " + point;
+        ScoreText.text = "SCORE " + point;
     }
 }

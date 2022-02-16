@@ -24,6 +24,6 @@ public class Earth : PlanetsBase
     public override void UpdateScore()
     {
         point++;
-        Debug.Log("point up");
+        Debug.Log("point up " + point);
     }
 }

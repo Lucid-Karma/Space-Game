@@ -10,4 +10,5 @@ public static class EventManager
     public static UnityEvent OnGameEnd = new UnityEvent();
     public static UnityEvent OnViewChange = new UnityEvent();
     public static UnityEvent OnPlanetDestroy = new UnityEvent();
+    public static UnityEvent OnTargeting = new UnityEvent();
 }

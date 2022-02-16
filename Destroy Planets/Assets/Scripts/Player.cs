@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
 	//public static int point = 0;
 
 
+
+    public static float offset;
+    public Transform Earth;
+
+
     private void FixedUpdate()
     {
        Rigidb.AddForce(0, 0, forwardForce * Time.fixedDeltaTime);
@@ -41,6 +46,19 @@ public class Player : MonoBehaviour
 
 	   Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 	   
-	   Rigidb.velocity = input * MoveSpeed* Time.fixedDeltaTime; // velocity can cause problems in some case.		
+	   Rigidb.velocity = input * MoveSpeed* Time.fixedDeltaTime; // velocity can cause problems in some case.	
+
+       //calculates the distance between player and planet. 
+       offset = Vector3.Distance(transform.position, Earth.position);
+       //Debug.Log("Distance  " + offset);	
+    }
+
+    void OnNeartoPlanet()
+    {
+        if (offset <= 20f)
+        {
+            EventManager.OnTargeting.Invoke();
+            Debug.Log("Distance  " + offset);
+        }
     }
 }
