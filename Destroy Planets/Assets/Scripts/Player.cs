@@ -19,10 +19,10 @@ public class Player : MonoBehaviour
         }
     }
 	
-    public float forwardForce = 2000f;
-	public float MoveSpeed;
+    public static float forwardForce = 2000f;
+	public float MoveSpeed = 500;
 
-	public static int point = 0;
+	//public static int point = 0;
 
 
     private void FixedUpdate()

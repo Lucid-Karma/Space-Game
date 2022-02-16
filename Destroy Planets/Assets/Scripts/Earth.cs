@@ -20,4 +20,10 @@ public class Earth : PlanetsBase
     {
         Debug.Log("touched");
     }
+
+    public override void UpdateScore()
+    {
+        point++;
+        Debug.Log("point up");
+    }
 }
