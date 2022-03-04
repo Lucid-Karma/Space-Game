@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlanetsBase : MonoBehaviour
 {
-    public static int point = 0;
+    public static int point = 1;
     public void OnMouseDown()
     {
         EventManager.OnPlanetDestroy.Invoke();

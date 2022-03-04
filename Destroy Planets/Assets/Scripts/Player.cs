@@ -31,12 +31,12 @@ public class Player : MonoBehaviour
 
        if(Input.GetKey(KeyCode.X))
        {
-           forwardForce = forwardForce + 200f;
+           forwardForce = forwardForce + 2000f;
        }
 
        if(forwardForce >= 3000f || Input.GetKeyUp(KeyCode.X))
        {
-           forwardForce = forwardForce - 10f;
+           forwardForce = forwardForce - 800f;
        } 
 
 	   Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
