@@ -9,7 +9,7 @@ public abstract class PlanetsBase : MonoBehaviour
     {
         EventManager.OnPlanetDestroy.Invoke();
         UpdateScore();
-        Debug.Log("bomb");
+        //Debug.Log("bomb");
     }
 
     public abstract void UpdateScore();

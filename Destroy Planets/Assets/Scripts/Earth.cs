@@ -19,6 +19,7 @@ public class Earth : PlanetsBase
     public override void OnCollisionEnter()
     {
         Debug.Log("touched");
+        Destroy(gameObject);
     }
 
     public override void UpdateScore()
