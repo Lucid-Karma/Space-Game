@@ -28,7 +28,7 @@ public class SpeedController : MonoBehaviour
     {
         EventManager.OnPlanetDestroy.RemoveListener(UpdateSpeedText);
     }*/
-
+/*
     private void Update() 
     {
         UpdateSpeedText();
@@ -40,5 +40,5 @@ public class SpeedController : MonoBehaviour
         float baseSpeed = speed + player.position.z / 100;
         //ScoreText.text = "Speed " + speed + player.position.z.ToString("0");
         SpeedText.text = "SPEED " + baseSpeed.ToString("0");
-    }
+    }*/
 }
