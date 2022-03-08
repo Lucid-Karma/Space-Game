@@ -170,11 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a4f180ed632843b09e3f1b458083b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  maxspeed: 0
-  minspeed: 0
-  rotspeed1: 0
-  rotspeed2: 0
+  MoveSpeed: 500
+  RotSpeed: 100
 --- !u!54 &1328663
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6818,9 +6815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d8a6404a2efce4090c14403255d5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hedef: {fileID: 1906421486}
-  uzaklik: 10
-  yukseklik: 3.17
+  player: {fileID: 1906421486}
+  offset: {x: 0, y: 3.17, z: -10}
 --- !u!114 &1676868796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6899,7 +6895,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f81ed0e0f1a31747927a68f6ec2c4bb, type: 2}
+  - {fileID: 2100000, guid: 43d1eb3e50e46324f8d994a90002fefb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7229,11 +7225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a4f180ed632843b09e3f1b458083b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  maxspeed: 20
-  minspeed: 5
-  rotspeed1: 10
-  rotspeed2: 10
+  MoveSpeed: 500
+  RotSpeed: 100
 --- !u!54 &1906421489
 Rigidbody:
   m_ObjectHideFlags: 0
