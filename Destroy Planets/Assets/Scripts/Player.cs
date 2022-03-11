@@ -32,8 +32,8 @@ public class Player : MonoBehaviour
        transform.position += transform.forward * thrust * Time.fixedDeltaTime;
 
        activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
-       //activeRoll = Input.GetAxis("Horizontal") * roll * Time.fixedDeltaTime;
-       activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
+       activeRoll = Input.GetAxis("Horizontal") * roll * Time.fixedDeltaTime;
+       activeYaw = Input.GetAxis("Yaw") * yaw * Time.fixedDeltaTime;
 
        transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
 
@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
            thrust = thrust * 2f;
        }
 
-       if(thrust >= 3000f || Input.GetKeyUp(KeyCode.X))
+       //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
+       if(Input.GetKey(KeyCode.Z))
        {
            thrust = thrust / 2f;
        } 
