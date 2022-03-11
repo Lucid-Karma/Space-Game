@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
-{/*
+{
     public static FollowPlayer Instance { get; private set; }
 
 	// Takip edilecek obje
@@ -40,13 +40,5 @@ public class FollowPlayer : MonoBehaviour
 		// Kamerayı "yumuşak" bir şekilde hedef'e doğru döndür
 		Quaternion rot = Quaternion.LookRotation( hedef.position - transform.localPosition );
 		transform.localRotation = Quaternion.Slerp( transform.localRotation, rot, 0.1f );
-	}*/
-
-	public Transform player;
-    public Vector3 offset;
-
-    void FixedUpdate()
-    {
-        transform.position = player.position + offset;
-    }
+	}
 }

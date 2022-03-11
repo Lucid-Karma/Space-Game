@@ -19,37 +19,37 @@ public class Player : MonoBehaviour
         }
     }
 	
-    public static float forwardForce = 2000f;
-	public float MoveSpeed = 500;
-    public float RotSpeed = 100;
-
-	//public static int point = 0;
+	public float thrust = 500; //Forward force.
+    public float lift; //Up and down movement.
+    public float yaw; //Left and right movement, Rotate from the nose.
+    public float roll; //Rotate of z axis.
+    public float pitch; //Rotate of x axis.
+    private float activeLift, activeYaw, activeRoll, activePitch;
 
 
     private void FixedUpdate()
     {
-       //Rigidb.AddForce(0, 0, forwardForce * Time.fixedDeltaTime);
-       float VI = Input.GetAxis("Vertical") * RotSpeed;
-       float HI = Input.GetAxis("Horizontal") * RotSpeed;
-       transform.Rotate(VI, HI, 0 * RotSpeed * Time.fixedDeltaTime);
+       transform.position += transform.forward * thrust * Time.fixedDeltaTime;
+
+       activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
+       //activeRoll = Input.GetAxis("Horizontal") * roll * Time.fixedDeltaTime;
+       activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
+
+       transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
 
        if(Input.GetKey(KeyCode.X))
        {
-           forwardForce = forwardForce + 2000f;
+           thrust = thrust * 2f;
        }
 
-       if(forwardForce >= 3000f || Input.GetKeyUp(KeyCode.X))
+       if(thrust >= 3000f || Input.GetKeyUp(KeyCode.X))
        {
-           forwardForce = forwardForce - 800f;
+           thrust = thrust / 2f;
        } 
 
-	   Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-       //Vector3 Rotinput = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 	   
-	   Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.	
-       //Rigidb.AddForce(VI, HI, HI * forwardForce * Time.fixedDeltaTime);
-       //transform.Translate(Posinput * MoveSpeed * Time.fixedDeltaTime);
-       //transform.Rotate(VI, HI, 0 * RotSpeed * Time.fixedDeltaTime);	
+	   //Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.
     }
 
 
