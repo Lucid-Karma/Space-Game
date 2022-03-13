@@ -42,9 +42,12 @@ public class Bullet : MonoBehaviour
 
         if (Physics.Raycast(bulletWay, out celestialBodies, 500f))
         {
+            Instantiate(bulletRB, cockpit.transform.position, Quaternion.identity);
             muzzleFlash.Play();
             transform.position = celestialBodies.point;
             Debug.Log("success");
+            Destroy(gameObject);
+
         }
     }
 

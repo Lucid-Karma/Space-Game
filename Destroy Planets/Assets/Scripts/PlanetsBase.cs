@@ -9,10 +9,12 @@ public abstract class PlanetsBase : MonoBehaviour
     {
         EventManager.OnPlanetDestroy.Invoke();
         UpdateScore();
-        //Debug.Log("bomb");
     }
 
-    public abstract void UpdateScore();
+    public virtual void UpdateScore()
+    {
+        point++;
+    }
 
     public abstract void OnCollisionEnter();
 }

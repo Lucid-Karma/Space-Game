@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Earth : PlanetsBase
+public class Venus : PlanetsBase
 {
     public override void OnCollisionEnter()
     {
-        Debug.Log("Earth");
+        Debug.Log("Venus");
         Destroy(gameObject);
     }
 
     public override void UpdateScore()
     {
-        point += 10;
+        point += 2;
     }
 }
