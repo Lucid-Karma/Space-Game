@@ -53,6 +53,11 @@ public class Player : MonoBehaviour
 	   //Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.
     }
 
+    private void OnCollisionEnter(Collision other) 
+    {
+        EventManager.OnLevelFail.Invoke();
+    }
+
 
 /*
     public float speed;
