@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision other) 
     {
         EventManager.OnLevelFail.Invoke();
+        Debug.Log("touched");
     }
 
 
