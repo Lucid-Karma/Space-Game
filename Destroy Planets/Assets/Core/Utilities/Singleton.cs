@@ -49,7 +49,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private static bool applicationIsQuitting = false;
+    public static bool applicationIsQuitting = false;
 
     public void OnDestroy()
     {

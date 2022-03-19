@@ -14,11 +14,6 @@ public class Bullet : MonoBehaviour
         bulletRB = GetComponent<Rigidbody>();   
         cockpit = GameObject.Find("Camera1").GetComponent<Camera>();
     }
-    /*void Start()
-    {
-        float speed = 100f;
-        bulletRB.velocity = transform.forward * speed;
-    }*/
 
     private void OnEnable()
     {
@@ -32,12 +27,6 @@ public class Bullet : MonoBehaviour
 
     void Kill()
     {
-        //Vector3 shoot = new Vector3(0.5f, 0.5f, 0);
-        //float speed = 100f;
-        //bulletRB.velocity = transform.position(Input.mousePosition) * speed;
-        //bulletRB.transform.position = shoot;
-        //Destroy(gameObject, 2f);
-
         Ray bulletWay = cockpit.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
 
         if (Physics.Raycast(bulletWay, out celestialBodies, 500f))

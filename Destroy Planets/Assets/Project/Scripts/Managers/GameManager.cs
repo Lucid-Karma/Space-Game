@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    /*[System.Serializable]
-    public class GameData
-    {
-        
-    }*/
-
     private bool isGameStarted;
-    //[ShowInInspector]
-    //[ReadOnly]
     public bool IsGameStarted { get { return isGameStarted; } private set { isGameStarted = value; } }
-
-    //public GameData GameData = new GameData();
 
     public void StartGame()
     {
-        if (IsGameStarted)
+        if (IsGameStarted || applicationIsQuitting == false)
             return;
 
         IsGameStarted = true;
@@ -28,7 +18,7 @@ public class GameManager : Singleton<GameManager>
 
     public void EndGame()
     {
-        if (!IsGameStarted)
+        if (!IsGameStarted || applicationIsQuitting == true)
             return;
 
         IsGameStarted = false;
