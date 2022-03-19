@@ -31,7 +31,6 @@ public class Panel : MonoBehaviour
         }
     }
 
-    //[Button]
     public virtual void ShowPanel()
     {
         CanvasGroup.alpha = 1;
@@ -39,7 +38,6 @@ public class Panel : MonoBehaviour
         CanvasGroup.blocksRaycasts = true;
     }
 
-    //[Button]
     public virtual void HidePanel()
     {
         CanvasGroup.alpha = 0;
