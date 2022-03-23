@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class PlanetsBase : MonoBehaviour
 {
-    public static int point = 1;
+    public static int point = 0;
     public void OnMouseDown()
     {
-        EventManager.OnPlanetDestroy.Invoke();
         UpdateScore();
+        EventManager.OnPlanetDestroy.Invoke();
     }
 
     public virtual void UpdateScore()

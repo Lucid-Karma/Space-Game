@@ -13,5 +13,6 @@ public class Earth : PlanetsBase
     public override void UpdateScore()
     {
         point += 10;
+        Debug.Log("+10");
     }
 }
