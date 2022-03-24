@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Camera cockpit;
     public ParticleSystem muzzleFlash;
 
+
     private void Awake() 
     {
         bulletRB = GetComponent<Rigidbody>();   
@@ -30,15 +31,11 @@ public class Bullet : MonoBehaviour
         Ray bulletWay = cockpit.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
 
         if (Physics.Raycast(bulletWay, out celestialBodies, 500f))
+        //if(Physics.Raycast(cockpit.transform.position, cockpit.transform.forward, out celestialBodies, 500f))
         {
-            if (bulletRB != null)
-            {
-                muzzleFlash.Play();
-                transform.position = celestialBodies.point;
-                Destroy(gameObject, 0.5f);
-            }
 
-            Instantiate(bulletRB, cockpit.transform.position, Quaternion.identity);
+            //Instantiate(bulletRB, cockpit.transform.position, Quaternion.identity);
+            Instantiate(bulletRB);
             //transform.position = cockpit.transform.position;
             muzzleFlash.Play();
             transform.position = celestialBodies.point;
