@@ -44,6 +44,5 @@ public class GamePanel : Panel
         LevelSuccesPanel.ShowPanel();
         LevelFailPanel.HidePanel();
         ShowPanel();
-        Debug.Log("exist");
     }
 }
