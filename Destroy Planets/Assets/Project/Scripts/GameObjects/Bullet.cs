@@ -31,13 +31,20 @@ public class Bullet : MonoBehaviour
 
         if (Physics.Raycast(bulletWay, out celestialBodies, 500f))
         {
+            if (bulletRB != null)
+            {
+                muzzleFlash.Play();
+                transform.position = celestialBodies.point;
+                Destroy(gameObject, 0.5f);
+            }
+
             Instantiate(bulletRB, cockpit.transform.position, Quaternion.identity);
             //transform.position = cockpit.transform.position;
             muzzleFlash.Play();
             transform.position = celestialBodies.point;
             //transform.position = cockpit.transform.position;
             //Debug.Log("success");
-            Destroy(gameObject, 1.0f);
+            Destroy(gameObject, 0.5f);
 
         }
     }
