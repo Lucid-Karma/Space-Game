@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SwitchCamera : MonoBehaviour
 {
-    private int anchor = 0;
-    public Camera[] cameras;
-    public AudioListener[] cams;
+    private int anchor = 0; // assigned a value to determine which camera is on.
+    public Camera[] cameras; // Access to cameras
+    public AudioListener[] camAudio;// Access to AudioListeners coz it can be bug when you enabled false Cameras but not AudioListeners.
 
     private void Awake() 
     {
-        for (int i = 0; i < cams.Length; i++)
+        for (int i = 0; i < camAudio.Length; i++)
         {
-            cams[i] = cameras[i].GetComponent<AudioListener>();
+            camAudio[i] = cameras[i].GetComponent<AudioListener>(); // Access every AudioListener of cameras.
         }
 
-        cams[1].enabled = false;
-        cameras[1].enabled =  false; 
+        camAudio[1].enabled = false;    
+        cameras[1].enabled =  false; // Disable second Camera so game'll start with Main Camera.
     }
 
     void Update()
@@ -28,16 +28,16 @@ public class SwitchCamera : MonoBehaviour
     {
         if(Input.GetKeyDown("space"))
         {
-            cameras[anchor].enabled = false;
-            cams[anchor].enabled = false;
+            cameras[anchor].enabled = false; // Disable main camera when pressed space. Will represent the second camera next time
+            camAudio[anchor].enabled = false;
             anchor++;
-            if (anchor >= cameras.Length)
+            if (anchor >= cameras.Length) // It creates a loop because we control anchor.
             {
                 anchor = 0 ;
             }
 
-            cameras[anchor].enabled = true;
-            cams[anchor].enabled = true;
+            cameras[anchor].enabled = true; // enabled second cam coz anchor increased. will represent the main camera next time
+            camAudio[anchor].enabled = true;
         }
     }
 }
