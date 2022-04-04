@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
        if(Input.GetKey(KeyCode.X))
        {
-           thrust = thrust * 2f;
+           thrust = thrust + 2 * 8;
        }
 
        //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
