@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreTextController : MonoBehaviour
 {
-    private Text scoreText;
-    public Text ScoreText
+    private TextMeshProUGUI scoreText;
+    public TextMeshProUGUI ScoreText
     {
         get
         {
             if(scoreText == null)
-            scoreText = GetComponent<Text>();
+            scoreText = GetComponent<TextMeshProUGUI>();
 
             return scoreText;
         }
@@ -30,6 +31,6 @@ public class ScoreTextController : MonoBehaviour
     private void UpdateScoreText()
     {
         int point = PlanetsBase.point;
-        ScoreText.text = "Score " + point;
+        ScoreText.text = "SCORE " + point;
     }
 }
