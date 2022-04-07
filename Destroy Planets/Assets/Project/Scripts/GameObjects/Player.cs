@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
 	
     #region Movement
         
-        public float thrust = 500; //Forward force.
+        public static float thrust = 5f; //Forward force.
         public float lift; //Up and down movement.
-        public float yaw; //Left and right movement, Rotate from the nose.
-        public float roll; //Rotate of z axis.
+        public float yaw; //Rotate of z axis?
+        public float roll; //Left and right movement, Rotate from the nose?
         public float pitch; //Rotate of x axis.
         private float activeLift, activeYaw, activeRoll, activePitch;
+
+        private bool isLimitExceeded;
 
     #endregion
 
@@ -39,6 +41,9 @@ public class Player : MonoBehaviour
     #region Raycast
         public RaycastHit celestialBodies; // This is our target. Gonna work just for planets cuz OnPlanetDestroy event called there and Kill method only works for this event.
         public Camera cockpit; // it is where do we aim.
+
+
+        //public ParticleSystem muzzleFlash;
     #endregion
 
     private void Awake() 
@@ -86,6 +91,9 @@ public class Player : MonoBehaviour
                 bullet[1].transform.position = celestialBodies.point;
                 swipe = true;
             }
+
+            //muzzleFlash.transform.position = celestialBodies.point;
+            //muzzleFlash.Play();
         }
     }
 	
@@ -95,20 +103,23 @@ public class Player : MonoBehaviour
        transform.position += transform.forward * thrust * Time.fixedDeltaTime;
 
        activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
-       activeRoll = Input.GetAxis("Horizontal") * roll * Time.fixedDeltaTime;
-       activeYaw = Input.GetAxis("Yaw") * yaw * Time.fixedDeltaTime;
+       activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
+       activeRoll = Input.GetAxis("Roll") * roll * Time.fixedDeltaTime;
+       
 
        transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
 
        if(Input.GetKey(KeyCode.X))
        {
-           thrust = thrust + 2 * 8;
+           //thrust = thrust + 2 * 8;
+           thrust += 10;
        }
 
        //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
        if(Input.GetKey(KeyCode.Z))
        {
-           thrust = thrust / 2f;
+           //thrust = thrust / 2f;
+           thrust -= 15;
        } 
 
 	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);

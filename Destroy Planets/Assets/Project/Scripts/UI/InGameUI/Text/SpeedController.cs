@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpeedController : MonoBehaviour
 {
-    public Transform player;
+    //public Transform player;
 
-    private Text speedText;
-    public Text SpeedText
+    private TextMeshProUGUI speedText;
+    public TextMeshProUGUI SpeedText
     {
         get
         {
             if(speedText == null)
-            speedText = GetComponent<Text>();
+            speedText = GetComponent<TextMeshProUGUI>();
 
             return speedText;
         }
@@ -28,17 +29,17 @@ public class SpeedController : MonoBehaviour
     {
         EventManager.OnPlanetDestroy.RemoveListener(UpdateSpeedText);
     }*/
-/*
-    private void Update() 
+
+    private void FixedUpdate() 
     {
         UpdateSpeedText();
     }
 
     private void UpdateSpeedText()
     {
-        float speed = Player.forwardForce;
-        float baseSpeed = speed + player.position.z / 100;
+        float speed = Player.thrust;
+        //float baseSpeed = speed * Time.fixedDeltaTime;
         //ScoreText.text = "Speed " + speed + player.position.z.ToString("0");
-        SpeedText.text = "SPEED " + baseSpeed.ToString("0");
-    }*/
+        SpeedText.text = "SPEED " + speed.ToString("0");
+    }
 }

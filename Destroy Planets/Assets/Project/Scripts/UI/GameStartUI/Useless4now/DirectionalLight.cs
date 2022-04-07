@@ -6,17 +6,15 @@ public class DirectionalLight : MonoBehaviour
 {
     public float xAxis;
     public float yAxis;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    public float speed;
 
     // Update is called once per frame
     void Update()
     {
-        xAxis = Random.Range(0f, 1f);
-        //yAxis = Random.Range(-3.0f,3f);
-        transform.rotation = new Quaternion(xAxis, 0, 0, 1);
+        //speed = 50f;
+        xAxis = Random.Range(-1f, 1f);
+        yAxis = Random.Range(-1f,1f);
+        transform.Rotate(xAxis * speed * Time.deltaTime, yAxis * speed * Time.deltaTime, 0, Space.Self);
     }
 }
