@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         public Camera cockpit; // it is where do we aim.
 
 
-        //public ParticleSystem muzzleFlash;
+        public ParticleSystem boomFlash;
     #endregion
 
     private void Awake() 
@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
         {
             bullet[i].SetActive(false);
         }
+
+        //boomFlash.Stop();
     }
 
     // Will only be triggered when the corresponding event is called.
@@ -92,8 +94,8 @@ public class Player : MonoBehaviour
                 swipe = true;
             }
 
-            //muzzleFlash.transform.position = celestialBodies.point;
-            //muzzleFlash.Play();
+            boomFlash.transform.position = celestialBodies.point;
+            boomFlash.Play();
         }
     }
 	

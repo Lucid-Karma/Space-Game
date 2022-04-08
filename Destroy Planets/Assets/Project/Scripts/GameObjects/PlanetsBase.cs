@@ -7,6 +7,7 @@ public abstract class PlanetsBase : MonoBehaviour
 {
     public static int point = 0; // A static int variable to make ScorTXT access it.
     public static int PlanetCount = 4;
+    
     public void OnMouseDown()
     {
         UpdateScore();
