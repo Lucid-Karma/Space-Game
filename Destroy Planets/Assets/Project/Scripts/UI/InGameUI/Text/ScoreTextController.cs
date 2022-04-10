@@ -21,16 +21,24 @@ public class ScoreTextController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnPlanetDestroy.AddListener(UpdateScoreText);
+        //EventManager.OnGameStart.AddListener(RecreateScore);
     }
 
     private void OnDisable()
     {
         EventManager.OnPlanetDestroy.RemoveListener(UpdateScoreText);
+        //EventManager.OnGameStart.RemoveListener(RecreateScore); 
     }
 
+    public int point = 0;
     private void UpdateScoreText()
     {
-        int point = PlanetsBase.point;
+        point = PlanetsBase.point;
         ScoreText.text = "SCORE " + point;
     }
+
+    /*public void RecreateScore()
+    {
+        point = 0;
+    }*/
 }
