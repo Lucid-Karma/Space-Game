@@ -26,4 +26,5 @@ public abstract class PlanetsBase : MonoBehaviour
     }
 
     public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
+
 }

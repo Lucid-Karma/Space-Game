@@ -120,8 +120,8 @@ public class Player : MonoBehaviour
        //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
        if(Input.GetKey(KeyCode.Z))
        {
+           if(thrust >= 16.0f)  thrust -= 15;
            //thrust = thrust / 2f;
-           thrust -= 15;
        } 
 
 	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);

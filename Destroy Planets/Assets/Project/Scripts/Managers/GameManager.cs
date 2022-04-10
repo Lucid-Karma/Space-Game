@@ -24,4 +24,18 @@ public class GameManager : Singleton<GameManager>
         IsGameStarted = false;
         EventManager.OnGameEnd.Invoke();
     }
+
+    private void OnEnable()
+    {
+        EventManager.OnLevelFail.AddListener(StopGame);
+    }
+    private void OnDisable()
+    {
+        EventManager.OnLevelFail.RemoveListener(StopGame);   
+    }
+
+    void StopGame()
+    {
+
+    }
 }
