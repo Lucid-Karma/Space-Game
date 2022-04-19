@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
 
     void Kill()
     {
-        Ray bulletWay = cockpit.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
+        //Ray bulletWay = cockpit.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
+        Ray bulletWay = cockpit.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         if (Physics.Raycast(bulletWay, out celestialBodies, 1000f)) // (Our position?, target's position, 1000f away)
         {
@@ -135,66 +136,4 @@ public class Player : MonoBehaviour
         EventManager.OnLevelFail.Invoke();
         Debug.Log("touched");
     }
-
-
-/*
-    public float speed;
-    public float maxspeed;
-    public float minspeed;
-    public float rotspeed1;
-    public float rotspeed2;
-
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        transform.position += transform.forward * Time.fixedDeltaTime * speed;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            if (speed < maxspeed) speed++;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (speed > minspeed) speed--;
-        }
-
-        speed -= transform.forward.y * Time.fixedDeltaTime * 10;
-        if (speed < minspeed / 2) speed = minspeed;
-        if (speed > maxspeed * 2) speed = maxspeed;
-
-        
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            transform.Rotate(-Vector3.up * Time.fixedDeltaTime * rotspeed2);
-            transform.Translate(Vector3.left*Time.fixedDeltaTime*rotspeed1);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(-Vector3.down * Time.fixedDeltaTime * rotspeed2);
-            transform.Translate(Vector3.right * Time.fixedDeltaTime * rotspeed1);
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Rotate(Vector3.left * Time.fixedDeltaTime * rotspeed1);
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Rotate(Vector3.right * Time.fixedDeltaTime * rotspeed1);
-        }*/
-
-        /*if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(-Vector3.up * Time.fixedDeltaTime * rotspeed2);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(-Vector3.down * Time.fixedDeltaTime * rotspeed2);
-        }
-
-    }*/
 }

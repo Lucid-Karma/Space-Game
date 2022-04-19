@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
         EventManager.OnGameEnd.Invoke();
     }
 
+/*
     private void OnEnable()
     {
         EventManager.OnLevelFail.AddListener(StopGame);
@@ -46,4 +47,5 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0.5f; //makes time scale 50% slower. 
     }
+    */
 }
