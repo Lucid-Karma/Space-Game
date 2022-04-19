@@ -11,14 +11,38 @@ public abstract class PlanetsBase : MonoBehaviour
     public void OnMouseDown()
     {
         UpdateScore();
-        EventManager.OnPlanetDestroy.Invoke(); // whenever mouse down to a planet, this event will be called.
+        //EventManager.OnPlanetDestroy.Invoke(); // whenever mouse down to a planet, this event will be called.
         PlanetCount -= 1;
         if (PlanetCount == 0)
         {
             EventManager.OnLevelSuccess.Invoke();
         }
     }
+
+    /*public void OnSuccess()
+    {
+        UpdateScore();
+
+        PlanetCount -= 1;
+        if (PlanetCount == 0)
+        {
+            EventManager.OnLevelSuccess.Invoke();
+            Debug.Log("count is  " + PlanetCount);
+        }
+    }
     
+    private void OnEnable()
+    {
+        //EventManager.OnPlanetDestroy.AddListener(UpdateScore);
+        EventManager.OnPlanetDestroy.AddListener(OnSuccess);
+    }
+
+    private void OnDisable()
+    {
+        //EventManager.OnPlanetDestroy.RemoveListener(UpdateScore);
+        EventManager.OnPlanetDestroy.RemoveListener(OnSuccess);
+    }*/
+
     // Default point as +1 but still changable coz it's virtual.
     public virtual void UpdateScore() 
     {
