@@ -7,30 +7,8 @@ public abstract class PlanetsBase : MonoBehaviour
 {
     public static int point = 0; // A static int variable to make ScorTXT access it.
     public static int PlanetCount = 4;
-    
-    public void OnMouseDown()
-    {
-        UpdateScore();
-        //EventManager.OnPlanetDestroy.Invoke(); // whenever mouse down to a planet, this event will be called.
-        PlanetCount -= 1;
-        if (PlanetCount == 0)
-        {
-            EventManager.OnLevelSuccess.Invoke();
-        }
-    }
 
-    /*public void OnSuccess()
-    {
-        UpdateScore();
-
-        PlanetCount -= 1;
-        if (PlanetCount == 0)
-        {
-            EventManager.OnLevelSuccess.Invoke();
-            Debug.Log("count is  " + PlanetCount);
-        }
-    }
-    
+    /*
     private void OnEnable()
     {
         //EventManager.OnPlanetDestroy.AddListener(UpdateScore);
@@ -41,7 +19,20 @@ public abstract class PlanetsBase : MonoBehaviour
     {
         //EventManager.OnPlanetDestroy.RemoveListener(UpdateScore);
         EventManager.OnPlanetDestroy.RemoveListener(OnSuccess);
-    }*/
+    }
+
+    public void OnSuccess()
+    {
+        UpdateScore();
+
+        PlanetCount -= 1;
+        if (PlanetCount == 0)
+        {
+            EventManager.OnLevelSuccess.Invoke();
+            Debug.Log("count is  " + PlanetCount);
+        }
+    }
+    */
 
     // Default point as +1 but still changable coz it's virtual.
     public virtual void UpdateScore() 
@@ -49,6 +40,20 @@ public abstract class PlanetsBase : MonoBehaviour
         point++;
     }
 
-    public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
+    //public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
+
+    public void OnCollisionEnter()
+    {
+        UpdateScore();
+
+        Destroy(gameObject);
+
+        PlanetCount -= 1;
+        if (PlanetCount == 0)
+        {
+            EventManager.OnLevelSuccess.Invoke();
+            Debug.Log("count is  " + PlanetCount);
+        }
+    }
 
 }

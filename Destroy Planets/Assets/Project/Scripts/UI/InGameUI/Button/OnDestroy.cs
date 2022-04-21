@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Crosshair : Panel
+public class OnDestroy : Panel
 {
-    
     void Awake()
     {
         HidePanel();
@@ -20,5 +19,9 @@ public class Crosshair : Panel
     {
         EventManager.OnCamera00On.RemoveListener(ShowPanel);
         EventManager.OnCamera01On.RemoveListener(ShowPanel);
+    }
+    public void OnShoot() // invoked in Unity's OnClick.
+    {
+        EventManager.OnPlanetDestroy.Invoke();
     }
 }

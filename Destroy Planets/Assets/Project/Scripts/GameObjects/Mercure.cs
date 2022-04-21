@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Mercure : PlanetsBase
 {
-    public override void OnCollisionEnter()
+    /*public override void OnCollisionEnter()
     {
-        Debug.Log("Mercure");
         Destroy(gameObject);
+    }*/
+
+    public override void UpdateScore()
+    {
+        point += 6;
+        Debug.Log("mercure");
     }
 }

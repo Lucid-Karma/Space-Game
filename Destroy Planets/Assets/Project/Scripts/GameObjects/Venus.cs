@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Venus : PlanetsBase
 {
-    public override void OnCollisionEnter()
+    /*public override void OnCollisionEnter()
     {
-        Debug.Log("Venus");
         Destroy(gameObject);
-    }
+    }*/
 
     public override void UpdateScore()
     {
         point += 2;
+        Debug.Log("Venus");
     }
 }
