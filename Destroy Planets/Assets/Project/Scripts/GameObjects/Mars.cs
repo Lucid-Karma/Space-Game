@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Mars : PlanetsBase
 {
-    public override void OnCollisionEnter()
+    /*public override void OnCollisionEnter()
     {
-        Debug.Log("Mars");
         Destroy(gameObject);
-    }
+    }*/
 
     public override void UpdateScore()
     {
         point += 2;
+        Debug.Log( "mars");
     }
 }
