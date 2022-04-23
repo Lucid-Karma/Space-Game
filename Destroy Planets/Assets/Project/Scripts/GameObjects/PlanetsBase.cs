@@ -8,17 +8,16 @@ public abstract class PlanetsBase : MonoBehaviour
     public static int point = 0; // A static int variable to make ScorTXT access it.
     public static int PlanetCount = 4;
 
-    /*
-    private void OnEnable()
+    /*private void OnEnable()
     {
         //EventManager.OnPlanetDestroy.AddListener(UpdateScore);
-        EventManager.OnPlanetDestroy.AddListener(OnSuccess);
+        EventManager.OnPreDestroy.AddListener(OnCollisionEnter);
     }
 
     private void OnDisable()
     {
         //EventManager.OnPlanetDestroy.RemoveListener(UpdateScore);
-        EventManager.OnPlanetDestroy.RemoveListener(OnSuccess);
+        EventManager.OnPreDestroy.RemoveListener(OnCollisionEnter);
     }
 
     public void OnSuccess()
@@ -31,8 +30,7 @@ public abstract class PlanetsBase : MonoBehaviour
             EventManager.OnLevelSuccess.Invoke();
             Debug.Log("count is  " + PlanetCount);
         }
-    }
-    */
+    }*/
 
     // Default point as +1 but still changable coz it's virtual.
     public virtual void UpdateScore() 
@@ -45,6 +43,7 @@ public abstract class PlanetsBase : MonoBehaviour
     public void OnCollisionEnter()
     {
         UpdateScore();
+        EventManager.OnPlanetDestroy.Invoke();
 
         Destroy(gameObject);
 

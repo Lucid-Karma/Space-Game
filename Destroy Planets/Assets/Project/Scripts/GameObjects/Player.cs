@@ -62,12 +62,12 @@ public class Player : MonoBehaviour
     // Will only be triggered when the corresponding event is called.
     private void OnEnable()
     {
-        EventManager.OnPlanetDestroy.AddListener(Kill);
+        EventManager.OnPreDestroy.AddListener(Kill);
     }
 
     private void OnDisable()
     {
-        EventManager.OnPlanetDestroy.RemoveListener(Kill);
+        EventManager.OnPreDestroy.RemoveListener(Kill);
     }
 
     void Kill()
