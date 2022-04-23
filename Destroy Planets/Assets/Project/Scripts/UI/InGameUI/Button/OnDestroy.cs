@@ -22,6 +22,6 @@ public class OnDestroy : Panel
     }
     public void OnShoot() // invoked in Unity's OnClick.
     {
-        EventManager.OnPlanetDestroy.Invoke();
+        EventManager.OnPreDestroy.Invoke();
     }
 }
