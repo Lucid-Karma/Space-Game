@@ -23,5 +23,6 @@ public class OnDestroy : Panel
     public void OnShoot() // invoked in Unity's OnClick.
     {
         EventManager.OnPreDestroy.Invoke();
+        FindObjectOfType<AudioManager>().Play("ShootingFX");
     }
 }
