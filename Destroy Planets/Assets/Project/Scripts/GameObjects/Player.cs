@@ -28,7 +28,20 @@ public class Player : MonoBehaviour
         public float pitch; //Rotate of x axis.
         private float activeLift, activeYaw, activeRoll, activePitch;
 
-        private bool isLimitExceeded;
+
+        /*
+        public float activePitchMin, activePitchMax;
+        public float activeYawMin, activeYawMax;
+        public float activeRollMin, activeRollMax;
+        */
+
+        //private bool isLimitExceeded;
+
+
+        //to draw the lines 
+        public float xRange;
+        public float yRange;
+        public float zRange;
 
     #endregion
 
@@ -108,6 +121,12 @@ public class Player : MonoBehaviour
        activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
        activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
        activeRoll = Input.GetAxis("Roll") * roll * Time.fixedDeltaTime;
+
+       /* 
+       activePitch = Mathf.Clamp(activePitch, activePitchMin, activePitchMax);
+       activeYaw = Mathf.Clamp(activeYaw, activeYawMin, activeYawMax);
+       activeRoll = Mathf.Clamp(activeRoll, activeRollMin, activeRollMax);
+       */
        
 
        transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
@@ -128,12 +147,37 @@ public class Player : MonoBehaviour
 	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 	   
 	   //Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.
+
+       //WithinBoundary();
     }
+
+    /*void WithinBoundary()
+    {
+        if(transform.position.x > xRange)
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        else if(transform.position.x < -xRange)
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+
+        if(transform.position.y > yRange)
+            transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
+        else if(transform.position.y < -yRange)
+            transform.position = new Vector3(transform.position.x, -yRange, transform.position.z);
+
+        if(transform.position.z > zRange)
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+        else if(transform.position.z < -zRange)
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
+    }*/       
 
     // If the ship hits something, calls the corresponding event
     private void OnCollisionEnter(Collision other) 
     {
         EventManager.OnLevelFail.Invoke();
         Debug.Log("touched");
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 }
