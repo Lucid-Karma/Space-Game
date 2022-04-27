@@ -18,7 +18,7 @@ public class GamePanel : Panel
         EventManager.OnLevelFail.AddListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.AddListener(InitializeLevelSuccessPanel);
         EventManager.OnGameStart.AddListener(HidePanel);
-        //Timer.OnTimeOut += InitializeLevelFailPanel;
+        Timer.OnTimeOut += InitializeLevelFailPanel;    //a big sus.
         //EventManager.OnLevelFinish.AddListener(HidePanel);
 
     }
@@ -28,7 +28,7 @@ public class GamePanel : Panel
         EventManager.OnLevelFail.RemoveListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.RemoveListener(InitializeLevelSuccessPanel);
         EventManager.OnGameStart.RemoveListener(HidePanel);
-        //Timer.OnTimeOut -= InitializeLevelFailPanel;
+        Timer.OnTimeOut -= InitializeLevelFailPanel;
         //EventManager.OnLevelFinish.RemoveListener(HidePanel);
 
 
