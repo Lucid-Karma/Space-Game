@@ -16,5 +16,6 @@ public static class EventManager
     public static UnityEvent OnPlanetDestroy = new UnityEvent();
     public static UnityEvent OnPreDestroy = new UnityEvent();
     public static UnityEvent OnTimeOut = new UnityEvent();
+    public static UnityEvent OnRestart = new UnityEvent();
 
 }

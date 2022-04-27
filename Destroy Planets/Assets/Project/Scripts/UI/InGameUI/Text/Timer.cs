@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
     }
 
     public static Action OnTimeOut;
-    public float timeValue = 90;
+    public float timeValue = 120;
 
     void FixedUpdate()
     {
@@ -42,6 +42,6 @@ public class Timer : MonoBehaviour
 
         //if(timeToDisplay == 0)  Time.timeScale=0;
 
-        //if(timeToDisplay == 0)  OnTimeOut?.Invoke();
+        if(timeToDisplay == 0)  OnTimeOut?.Invoke();    //such a big sus. cos never do works like real observer pattern piece. change it when the time come.
     }
 }

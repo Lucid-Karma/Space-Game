@@ -76,11 +76,15 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnPreDestroy.AddListener(Kill);
+        EventManager.OnRestart.AddListener(ResetSpeed);
+        EventManager.OnCamera01On.AddListener(Invisible);
     }
 
     private void OnDisable()
     {
         EventManager.OnPreDestroy.RemoveListener(Kill);
+        EventManager.OnRestart.RemoveListener(ResetSpeed);
+        EventManager.OnCamera01On.RemoveListener(Invisible);
     }
 
     void Kill()
@@ -111,6 +115,16 @@ public class Player : MonoBehaviour
             boomFlash.transform.position = celestialBodies.point;
             boomFlash.Play();
         }
+    }
+
+    void ResetSpeed()
+    {
+        thrust = 5f;
+    }
+
+    void Invisible()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled=false;
     }
 	
 
@@ -151,7 +165,8 @@ public class Player : MonoBehaviour
        //WithinBoundary();
     }
 
-    /*void WithinBoundary()
+    /*
+    void WithinBoundary()
     {
         if(transform.position.x > xRange)
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
@@ -167,13 +182,14 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         else if(transform.position.z < -zRange)
             transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
-    }*/       
+    }
+    */  
 
     // If the ship hits something, calls the corresponding event
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision collision) 
     {
         EventManager.OnLevelFail.Invoke();
-        Debug.Log("touched");
+        Debug.Log(collision.collider.name);
     }
 
     void OnTriggerExit(Collider other)

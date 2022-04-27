@@ -40,19 +40,38 @@ public abstract class PlanetsBase : MonoBehaviour
 
     //public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
 
-    public void OnCollisionEnter()
+    public void OnCollisionEnter(Collision collision)
     {
-        UpdateScore();
-        EventManager.OnPlanetDestroy.Invoke();
-
-        Destroy(gameObject);
-
-        PlanetCount -= 1;
-        if (PlanetCount == 0)
+        if(collision.gameObject.tag == "bullet")
         {
-            EventManager.OnLevelSuccess.Invoke();
-            Debug.Log("count is  " + PlanetCount);
+            UpdateScore();
+            EventManager.OnPlanetDestroy.Invoke();
+
+            Destroy(gameObject);
+
+            PlanetCount -= 1;
+            if (PlanetCount == 0)
+            {
+                EventManager.OnLevelSuccess.Invoke();
+                Debug.Log("count is  " + PlanetCount);
+            }
         }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnRestart.AddListener(Reset);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnRestart.RemoveListener(Reset);
+    }
+
+    public void Reset()
+    {
+        point = 0;
+        PlanetCount = 4;
     }
 
 }
