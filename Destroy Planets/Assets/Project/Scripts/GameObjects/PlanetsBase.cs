@@ -49,6 +49,9 @@ public abstract class PlanetsBase : MonoBehaviour
 
             Destroy(gameObject);
 
+            Debug.Log(gameObject.name);
+            Debug.Log(collision.gameObject.name);
+
             PlanetCount -= 1;
             if (PlanetCount == 0)
             {

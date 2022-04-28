@@ -5975,7 +5975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195149633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.1, y: 1.73, z: 62.92}
+  m_LocalPosition: {x: 29.1, y: 1.73, z: 69.92}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 1305136836}
@@ -6299,7 +6299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238404732653984, guid: e6befcf183056214bbc7cb055f062e04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 107
       objectReference: {fileID: 0}
     - target: {fileID: 4238404732653984, guid: e6befcf183056214bbc7cb055f062e04, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6567,7 +6567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310415893}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 488.159, y: 255.18, z: -15.3}
+  m_LocalPosition: {x: 488.159, y: 255.322, z: -15.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7430,7 +7430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 427063637}
   - component: {fileID: 427063638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet0Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8727,7 +8727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690094595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -46, z: 83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1939961529}
@@ -9584,7 +9584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853280963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.220005, y: -6.19, z: 136.4}
+  m_LocalPosition: {x: 34.220005, y: -6.19, z: 143.4}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 1305136836}
@@ -11348,7 +11348,6 @@ GameObject:
   - component: {fileID: 1211892041}
   - component: {fileID: 1211892040}
   - component: {fileID: 1211892043}
-  - component: {fileID: 1211892044}
   m_Layer: 6
   m_Name: Mars
   m_TagString: Untagged
@@ -11364,7 +11363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211892038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 21.59, z: 93.98}
+  m_LocalPosition: {x: -38.1, y: 21.59, z: 100.98}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 1305136836}
@@ -11444,23 +11443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc40d4ed444d9c41b42b26e6865cce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1211892044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211892038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: c198bf9284134344191ec8f9199f7786, type: 2}
-  isGlobal: 0
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!1 &1216652746
 GameObject:
   m_ObjectHideFlags: 0
@@ -12566,7 +12548,7 @@ GameObject:
   - component: {fileID: 1430702906}
   - component: {fileID: 1430702907}
   - component: {fileID: 1430702908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_01
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -12737,7 +12719,7 @@ GameObject:
   - component: {fileID: 1435162852}
   - component: {fileID: 1435162853}
   - component: {fileID: 1435162854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_00
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -13001,7 +12983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446669551}
   - component: {fileID: 1446669552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13189,7 +13171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1455353779}
   - component: {fileID: 1455353780}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13296,7 +13278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505622230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 94.5, z: 71.6}
+  m_LocalPosition: {x: 41, y: 22, z: 65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 231262450}
@@ -13962,7 +13944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1653318738}
   - component: {fileID: 1653318739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet1Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14435,7 +14417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699859104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 5, z: 330}
+  m_LocalPosition: {x: -0.7, y: 5, z: 345.5}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1305136836}
@@ -15658,7 +15640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0999822d687f0894eba507accdf368f5, type: 3}
       propertyPath: m_Name
-      value: Resurgent Class Star Destroyer
+      value: PlayerShip
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0999822d687f0894eba507accdf368f5, type: 3}
       propertyPath: m_TagString

@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
         }
 
         //boomFlash.Stop();
+
+         Physics.IgnoreLayerCollision(0, 7);
     }
 
     // Will only be triggered when the corresponding event is called.

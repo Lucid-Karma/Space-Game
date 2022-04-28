@@ -66,11 +66,17 @@ public class GameManager : Singleton<GameManager>
 
     void PauseGame()
     {
+        StartCoroutine( WaitbeforePause() );
         Time.timeScale = 0;
     }
 
     void ContinueGame()
     {
         Time.timeScale = 1;
+    }
+
+    IEnumerator WaitbeforePause()
+    {
+        yield return new WaitForSeconds( 1.5f ); 
     }
 }
