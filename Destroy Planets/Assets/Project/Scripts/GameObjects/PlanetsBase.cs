@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class PlanetsBase : MonoBehaviour
 {
     public static int point = 0; // A static int variable to make ScorTXT access it.
-    public static int PlanetCount = 4;
+    public static int PlanetCount = 25;
 
     /*private void OnEnable()
     {
@@ -40,7 +40,7 @@ public abstract class PlanetsBase : MonoBehaviour
 
     //public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
 
-    public void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "bullet")
         {
@@ -74,7 +74,7 @@ public abstract class PlanetsBase : MonoBehaviour
     public void Reset()
     {
         point = 0;
-        PlanetCount = 4;
+        PlanetCount = 25;
     }
 
 }

@@ -4,11 +4,36 @@ using UnityEngine;
 
 public class Earth : PlanetsBase
 {
-    /*public override void OnCollisionEnter()
+    //public ParticleSystem[] earthFlash;
+
+    public override void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Earth");
-        Destroy(gameObject);
-    }*/
+        
+        if(collision.gameObject.tag == "bullet")
+        {
+            //for(int i = 0; i < 4; i++)
+            //{
+                UpdateScore();
+                EventManager.OnPlanetDestroy.Invoke();
+            //}
+            /*
+            for(int j = 0; j < 4; j++)
+            {
+                earthFlash[j].Play();
+            }
+
+            Destroy(gameObject);
+            */
+            
+
+            PlanetCount -= 1;
+            if (PlanetCount == 0)
+            {
+                EventManager.OnLevelSuccess.Invoke();
+                Debug.Log("count is  " + PlanetCount);
+            }
+        }
+    }
 
     public override void UpdateScore()
     {

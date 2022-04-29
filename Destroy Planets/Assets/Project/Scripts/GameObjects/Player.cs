@@ -192,6 +192,7 @@ public class Player : MonoBehaviour
     {
         EventManager.OnLevelFail.Invoke();
         Debug.Log(collision.collider.name);
+        Debug.Log("Player Collision");
     }
 
     void OnTriggerExit(Collider other)
