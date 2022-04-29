@@ -13,10 +13,10 @@ public class TimeOut : Panel
     }
     void OnEnable()
     {
-        EventManager.OnTimeOut.AddListener(ShowPanel);
+        Timer.OnTimeOut += ShowPanel;
     }
     void OnDisable()
     {
-        EventManager.OnTimeOut.RemoveListener(ShowPanel);
+        Timer.OnTimeOut -= ShowPanel;
     }
 }
