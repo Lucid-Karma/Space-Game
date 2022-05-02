@@ -1,14 +1,16 @@
 //using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Audio;
+using UnityEngine.Audio;
 
 public class Audio : MonoBehaviour
 {
-    private static Audio audioObject = null;
+    public static AudioSource backgroundMusic; //nothing does in this scrit but provide to change the values of music frorm another script. a reference basically.
+    public static Audio audioObject = null;
   
     void Awake()
     {
+        //backgroundMusic = this;
         if( audioObject == null )
         {
             audioObject = this;

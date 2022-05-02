@@ -6,7 +6,8 @@ using UnityEngine;
 public abstract class PlanetsBase : MonoBehaviour
 {
     public static int point = 0; // A static int variable to make ScorTXT access it.
-    public static int PlanetCount = 25;
+    public static int PlanetCount = 10;
+    public static bool isLevelSuccessed = false;
 
     /*private void OnEnable()
     {
@@ -38,6 +39,17 @@ public abstract class PlanetsBase : MonoBehaviour
         point++;
     }
 
+    /*public void UpdatePlanetCount()
+    {
+        PlanetCount -= 1;
+        if (PlanetCount == 0)
+        {
+            EventManager.OnLevelSuccess.Invoke();
+            isLevelSuccessed = true;
+            Debug.Log("true");
+        }
+    }*/
+
     //public abstract void OnCollisionEnter(); // This is gonna be change for every single planet cuz it's abstract.
 
     public virtual void OnCollisionEnter(Collision collision)
@@ -45,19 +57,22 @@ public abstract class PlanetsBase : MonoBehaviour
         if(collision.gameObject.tag == "bullet")
         {
             UpdateScore();
+            //UpdatePlanetCount();
+            PlanetCount -= 1;
+            Debug.Log(PlanetCount);
+            if (PlanetCount == 0)
+            {
+                EventManager.OnLevelSuccess.Invoke();
+                isLevelSuccessed = true;
+                Debug.Log("true");
+            }
+
             EventManager.OnPlanetDestroy.Invoke();
 
             Destroy(gameObject);
 
             Debug.Log(gameObject.name);
             Debug.Log(collision.gameObject.name);
-
-            PlanetCount -= 1;
-            if (PlanetCount == 0)
-            {
-                EventManager.OnLevelSuccess.Invoke();
-                Debug.Log("count is  " + PlanetCount);
-            }
         }
     }
 
@@ -74,7 +89,8 @@ public abstract class PlanetsBase : MonoBehaviour
     public void Reset()
     {
         point = 0;
-        PlanetCount = 25;
+        PlanetCount = 10;
+        isLevelSuccessed = false;
     }
 
 }

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     }
 	
     #region Movement
-        
+        //[Range(5f, 215f)]
         public static float thrust = 5f; //Forward force.
         public float lift; //Up and down movement.
         public float yaw; //Rotate of z axis?
@@ -147,17 +147,18 @@ public class Player : MonoBehaviour
 
        transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
 
-       if(Input.GetKey(KeyCode.X))
+       if(Input.GetKey(KeyCode.LeftShift) && thrust <= 205f)
        {
            //thrust = thrust + 2 * 8;
            thrust += 10;
        }
 
        //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
-       if(Input.GetKey(KeyCode.Z))
+       if(Input.GetKey(KeyCode.LeftControl) && thrust >= 16.0f)
        {
-           if(thrust >= 16.0f)  thrust -= 15;
+           //if(thrust >= 16.0f)  thrust -= 15;
            //thrust = thrust / 2f;
+           thrust -= 15;
        } 
 
 	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
@@ -190,9 +191,12 @@ public class Player : MonoBehaviour
     // If the ship hits something, calls the corresponding event
     private void OnCollisionEnter(Collision collision) 
     {
-        EventManager.OnLevelFail.Invoke();
-        Debug.Log(collision.collider.name);
-        Debug.Log("Player Collision");
+        if(PlanetsBase.isLevelSuccessed == false)
+        {
+            EventManager.OnLevelFail.Invoke();
+            Debug.Log(collision.collider.name);
+            Debug.Log("Player Collision");
+        }
     }
 
     void OnTriggerExit(Collider other)

@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 
 public class GrenadeSound : MonoBehaviour
 {
-    public AudioSource grenadeEffect;
+    public static AudioSource grenadeEffect;
 
     void Awake()
     {
@@ -20,6 +20,5 @@ public class GrenadeSound : MonoBehaviour
     public void PlayFX()
     {
         grenadeEffect.Play();
-        Debug.Log("able to hear");
     }
 }

@@ -34,6 +34,8 @@ public class Timer : MonoBehaviour
     {
         if(timeToDisplay < 0)   timeToDisplay = 0;
 
+        if(PlanetsBase.isLevelSuccessed == false)     
+        {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         float milliseconds = timeToDisplay % 1 * 1000;
@@ -43,5 +45,6 @@ public class Timer : MonoBehaviour
         //if(timeToDisplay == 0)  Time.timeScale=0;
 
         if(timeToDisplay == 0 )  OnTimeOut?.Invoke();    //such a big sus. cos never do works like real observer pattern piece. change it when the time come.
+        }
     }
 }
