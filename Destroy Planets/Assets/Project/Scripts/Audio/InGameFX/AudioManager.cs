@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public static bool isSoundOn = true;
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -29,6 +30,19 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + "not found!");
             return;
         }
+        isSoundOn = true;
         s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.LogWarning("Sound: " + name + "not found!");
+            return;
+        }
+        s.source.Stop();
+        isSoundOn = false;
     }
 }
