@@ -17,5 +17,7 @@ public static class EventManager
     public static UnityEvent OnPreDestroy = new UnityEvent();
     public static UnityEvent OnTimeOut = new UnityEvent();
     public static UnityEvent OnRestart = new UnityEvent();
+    public static UnityEvent OnMusicOff = new UnityEvent();
+    public static UnityEvent OnMusicOn = new UnityEvent();
 
 }

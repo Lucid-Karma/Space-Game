@@ -5,12 +5,15 @@ using UnityEngine.Audio;
 
 public class Audio : MonoBehaviour
 {
-    public static AudioSource backgroundMusic; //nothing does in this scrit but provide to change the values of music frorm another script. a reference basically.
+    public static Audio Instance { get; private set; }
     public static Audio audioObject = null;
-  
+
+    private AudioSource background;
+
     void Awake()
     {
-        //backgroundMusic = this;
+        background = gameObject.GetComponent<AudioSource>();
+
         if( audioObject == null )
         {
             audioObject = this;
@@ -22,34 +25,23 @@ public class Audio : MonoBehaviour
         }
     }
 
-    /*
-    public AudioSource backGround;
-
-    void Awake()
-    {
-        backGround = gameObject.AddComponent<AudioSource>();
-    }
-
     void OnEnable()
     {
-        EventManager.OnGameStart.AddListener(PlaySound);
-        EventManager.OnGameEnd.AddListener(StopSound);
-
+        EventManager.OnMusicOn.AddListener(PlayMusic);
+        EventManager.OnMusicOff.AddListener(StopMusic);
     }
     void OnDisable()
     {
-        EventManager.OnGameStart.RemoveListener(PlaySound);
-        EventManager.OnGameEnd.RemoveListener(StopSound);
+        EventManager.OnMusicOn.RemoveListener(PlayMusic);
+        EventManager.OnMusicOff.RemoveListener(StopMusic);
     }
 
-    public void PlaySound()
+    public void PlayMusic()
     {
-        backGround.Play();
+        background.Play();
     }
-
-    public void StopSound()
+    public void StopMusic()
     {
-        backGround.Stop();
+        background.Stop();
     }
-    */
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class PlanetsBase : MonoBehaviour
 {
     public static int point = 0; // A static int variable to make ScorTXT access it.
-    public static int PlanetCount = 10;
+    public static int PlanetCount = 25;
     public static bool isLevelSuccessed = false;
 
     /*private void OnEnable()
@@ -89,7 +89,7 @@ public abstract class PlanetsBase : MonoBehaviour
     public void Reset()
     {
         point = 0;
-        PlanetCount = 10;
+        PlanetCount = 25;
         isLevelSuccessed = false;
     }
 
