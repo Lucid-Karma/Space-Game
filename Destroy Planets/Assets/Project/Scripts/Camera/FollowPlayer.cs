@@ -31,8 +31,8 @@ public class FollowPlayer : MonoBehaviour
 		Vector3 hedefKonum = hedef.position - hedef.forward * uzaklik + new Vector3( 0f, yukseklik, 0f );
 
 		// Player sahneden aşağı düşse de kamera belli bir y değerinin altına inmesin
-		if( hedefKonum.y < yukseklik )
-			hedefKonum.y = yukseklik;
+		//if( hedefKonum.y < yukseklik )
+			//hedefKonum.y = yukseklik;
 
 		// Kamerayı hedefKonum'a doğru "yumuşak" bir şekilde hareket ettir
 		transform.localPosition = Vector3.Slerp( transform.localPosition, hedefKonum, 0.1f );

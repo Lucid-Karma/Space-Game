@@ -9,6 +9,7 @@ public class InGamePanel : Panel
         EventManager.OnGameStart.AddListener(ShowPanel);
         EventManager.OnGameEnd.AddListener(HidePanel);
         EventManager.OnLevelFail.AddListener(HidePanel);
+        EventManager.OnLevelSuccess.AddListener(HidePanel);
         Timer.OnTimeOut += HidePanel;
     }
 
@@ -17,6 +18,7 @@ public class InGamePanel : Panel
         EventManager.OnGameStart.RemoveListener(ShowPanel);
         EventManager.OnGameEnd.RemoveListener(HidePanel);
         EventManager.OnLevelFail.RemoveListener(HidePanel);
+        EventManager.OnLevelSuccess.RemoveListener(HidePanel);
         Timer.OnTimeOut -= HidePanel;
     }
 }

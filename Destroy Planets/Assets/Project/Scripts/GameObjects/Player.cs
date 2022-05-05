@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
         public float roll; //Left and right movement, Rotate from the nose?
         public float pitch; //Rotate of x axis.
         private float activeLift, activeYaw, activeRoll, activePitch;
+        private float shipRange = 0.43f;
 
 
-        public bool isSpeedDown = false;
         /*
         public float activePitchMin, activePitchMax;
         public float activeYawMin, activeYawMax;
@@ -130,11 +130,10 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled=false;
     }
 	
-
     private void FixedUpdate()
     {
        transform.position += transform.forward * thrust * Time.fixedDeltaTime;
-
+       
        activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
        activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
        activeRoll = Input.GetAxis("Roll") * roll * Time.fixedDeltaTime;
@@ -145,17 +144,29 @@ public class Player : MonoBehaviour
        activeRoll = Mathf.Clamp(activeRoll, activeRollMin, activeRollMax);
        */
        
+       if(transform.rotation.x <= shipRange && transform.rotation.x >= -shipRange) 
+            transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
+       else if(transform.rotation.x >= shipRange)
+       {
+           transform.Rotate(shipRange, activeYaw, -activeRoll, Space.Self);
+           Debug.Log(transform.rotation.x);
+       }
+            //transform.Rotate(shipRange, activeYaw, -activeRoll, Space.Self);
+       else if(transform.rotation.x <= -shipRange)
+       {
+           transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
+           Debug.Log(transform.rotation.x);
+       } 
+            //transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
 
-       transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
-
-       if(Input.GetKey(KeyCode.LeftShift) && thrust <= 95f)
+       if(Input.GetKey(KeyCode.LeftShift) && thrust <= 92.5f)
        {
            //thrust = thrust + 2 * 8;
            thrust += 2.5f;
 
            //isSpeedDown = true;
        }
-       else if(thrust >= 11f && Input.GetKey(KeyCode.LeftShift) == false)
+       else if(thrust >= 8f && Input.GetKey(KeyCode.LeftShift) == false)
        {
             thrust -= 3f;
 
@@ -174,10 +185,10 @@ public class Player : MonoBehaviour
 	   
 	   //Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.
 
-       //WithinBoundary();
+       WithinBoundary();
     }
 
-    /*
+    
     void WithinBoundary()
     {
         if(transform.position.x > xRange)
@@ -195,7 +206,7 @@ public class Player : MonoBehaviour
         else if(transform.position.z < -zRange)
             transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
     }
-    */  
+    
 
     // If the ship hits something, calls the corresponding event
     private void OnCollisionEnter(Collision collision) 
@@ -206,10 +217,5 @@ public class Player : MonoBehaviour
             Debug.Log(collision.collider.name);
             Debug.Log("Player Collision");
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 }
