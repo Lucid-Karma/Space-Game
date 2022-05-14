@@ -23,6 +23,10 @@ public class FollowPlayer1 : MonoBehaviour
         activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
         activeRoll = Input.GetAxis("Roll") * roll * Time.fixedDeltaTime;
 
-        transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
+        if(transform.localEulerAngles.x <= 290f && transform.localEulerAngles.x >= 60f)
+            
+            transform.Rotate(-Mathf.Sign(-activePitch), activeYaw, activeRoll, Space.Self);
+        else
+            transform.Rotate(-activePitch, activeYaw, activeRoll, Space.Self);
     }
 }
