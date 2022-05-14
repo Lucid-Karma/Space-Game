@@ -180,17 +180,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1.Use "WASD" to move
+  m_text: '1.Use "WASD" to move + "Left" and "Right" keys to roll
 
-    2."Left Shift" for Speed up
+    2."Left Shift"
+    for Speed up
 
-    3.Click "Change
-    Camera Button" to be able to shoot
+    3.Click "Change Camera" button to be able to shoot
 
-    4.Use your "mouse" to shoot
+    4.Use
+    your "Mouse" to shoot
 
-    5.Have
-    Fun !!!'
+    5.Have Fun !!!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f17e8bb3967fe14093d5fec798fffd9, type: 2}
   m_sharedMaterial: {fileID: 21700449227511232, guid: 2f17e8bb3967fe14093d5fec798fffd9, type: 2}

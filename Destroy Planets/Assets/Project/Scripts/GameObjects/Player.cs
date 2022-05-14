@@ -138,17 +138,24 @@ public class Player : MonoBehaviour
        activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;
        activeRoll = Input.GetAxis("Roll") * roll * Time.fixedDeltaTime;
 
+       if(transform.localEulerAngles.x <= 290f && transform.localEulerAngles.x >= 60f)
+            
+            transform.Rotate(-Mathf.Sign(-activePitch), activeYaw, activeRoll, Space.Self);
+        else
+            transform.Rotate(-activePitch, activeYaw, activeRoll, Space.Self);
+
        /* 
        activePitch = Mathf.Clamp(activePitch, activePitchMin, activePitchMax);
        activeYaw = Mathf.Clamp(activeYaw, activeYawMin, activeYawMax);
        activeRoll = Mathf.Clamp(activeRoll, activeRollMin, activeRollMax);
        */
-       
-       if(transform.rotation.x <= shipRange && transform.rotation.x >= -shipRange) 
+       //Quaternion target = Quaternion.Euler(-activePitch, activeYaw, activeRoll);
+       //transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.fixedDeltaTime * pitch);
+       /*if(transform.rotation.x <= shipRange && transform.rotation.x >= -shipRange) 
             transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
        else if(transform.rotation.x >= shipRange)
        {
-           transform.Rotate(shipRange, activeYaw, -activeRoll, Space.Self);
+           transform.Rotate(0f, activeYaw, -activeRoll, Space.Self);
            Debug.Log(transform.rotation.x);
        }
             //transform.Rotate(shipRange, activeYaw, -activeRoll, Space.Self);
@@ -156,7 +163,7 @@ public class Player : MonoBehaviour
        {
            transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
            Debug.Log(transform.rotation.x);
-       } 
+       } */
             //transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
 
        if(Input.GetKey(KeyCode.LeftShift) && thrust <= 92.5f)
