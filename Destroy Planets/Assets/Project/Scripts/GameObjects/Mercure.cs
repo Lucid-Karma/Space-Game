@@ -13,5 +13,7 @@ public class Mercure : PlanetsBase
     {
         point += 6;
         Debug.Log("mercure");
+        if(point >= 30)
+            EventManager.OnScoreComplete.Invoke();
     }
 }

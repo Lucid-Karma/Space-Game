@@ -13,5 +13,7 @@ public class Mars : PlanetsBase
     {
         point += 2;
         Debug.Log( "mars");
+        if(point >= 30)
+            EventManager.OnScoreComplete.Invoke();
     }
 }
