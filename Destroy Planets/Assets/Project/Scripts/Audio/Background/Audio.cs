@@ -28,20 +28,20 @@ public class Audio : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnMusicOn.AddListener(PlayMusic);
-        EventManager.OnMusicOff.AddListener(StopMusic);
+        EventManager.OnMusicOff.AddListener(PauseMusic);
     }
     void OnDisable()
     {
         EventManager.OnMusicOn.RemoveListener(PlayMusic);
-        EventManager.OnMusicOff.RemoveListener(StopMusic);
+        EventManager.OnMusicOff.RemoveListener(PauseMusic);
     }
 
     public void PlayMusic()
     {
         background.Play();
     }
-    public void StopMusic()
+    public void PauseMusic()
     {
-        background.Stop();
+        background.Pause();
     }
 }

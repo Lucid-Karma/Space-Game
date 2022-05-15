@@ -13,5 +13,7 @@ public class Venus : PlanetsBase
     {
         point += 2;
         Debug.Log("Venus");
+        if(point >= 30)
+            EventManager.OnScoreComplete.Invoke();
     }
 }

@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
         public float roll; //Left and right movement, Rotate from the nose?
         public float pitch; //Rotate of x axis.
         private float activeLift, activeYaw, activeRoll, activePitch;
-        private float shipRange = 0.43f;
 
 
         /*
@@ -199,30 +198,47 @@ public class Player : MonoBehaviour
     void WithinBoundary()
     {
         if(transform.position.x > xRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
         else if(transform.position.x < -xRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
 
         if(transform.position.y > yRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
+        }
         else if(transform.position.y < -yRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(transform.position.x, -yRange, transform.position.z);
+        }
 
         if(transform.position.z > zRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+        }
         else if(transform.position.z < -zRange)
+        {
+            thrust = 0f;
             transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
+        }
     }
     
 
     // If the ship hits something, calls the corresponding event
     private void OnCollisionEnter(Collision collision) 
     {
-        if(PlanetsBase.isLevelSuccessed == false)
+        if(PlanetsBase.isLevelSuccessed == false && collision.gameObject.tag != "bullet")
         {
             EventManager.OnLevelFail.Invoke();
-            Debug.Log(collision.collider.name);
-            Debug.Log("Player Collision");
+            Debug.Log("Player Collision: " + collision.collider.name);
         }
     }
 }

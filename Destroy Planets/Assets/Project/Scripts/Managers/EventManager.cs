@@ -19,5 +19,6 @@ public static class EventManager
     public static UnityEvent OnRestart = new UnityEvent();
     public static UnityEvent OnMusicOff = new UnityEvent();
     public static UnityEvent OnMusicOn = new UnityEvent();
+    public static UnityEvent OnScoreComplete = new UnityEvent();
 
 }

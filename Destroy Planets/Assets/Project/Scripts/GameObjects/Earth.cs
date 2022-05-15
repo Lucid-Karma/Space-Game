@@ -39,5 +39,7 @@ public class Earth : PlanetsBase
     {
         point += 10;
         Debug.Log("earth");
+        if(point >= 30)
+            EventManager.OnScoreComplete.Invoke();
     }
 }

@@ -37,6 +37,9 @@ public abstract class PlanetsBase : MonoBehaviour
     public virtual void UpdateScore() 
     {
         point++;
+
+        if(point >= 30)
+            EventManager.OnScoreComplete.Invoke();
     }
 
     /*public void UpdatePlanetCount()
