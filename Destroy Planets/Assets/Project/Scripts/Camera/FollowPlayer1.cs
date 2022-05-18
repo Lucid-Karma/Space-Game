@@ -17,7 +17,6 @@ public class FollowPlayer1 : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = player.position + offset;
-        //transform.rotation = player.rotation;
 
         activePitch = Input.GetAxis("Vertical") * pitch * Time.fixedDeltaTime;
         activeYaw = Input.GetAxis("Horizontal") * yaw * Time.fixedDeltaTime;

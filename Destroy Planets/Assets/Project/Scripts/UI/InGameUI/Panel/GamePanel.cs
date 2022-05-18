@@ -17,29 +17,18 @@ public class GamePanel : Panel
 
     private void OnEnable()
     {
-        //EventManager.OnLevelFail.AddListener(InitializeBlurPanel);
-        //EventManager.OnLevelSuccess.AddListener(InitializeBlurPanel);
-
         EventManager.OnLevelFail.AddListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.AddListener(InitializeLevelSuccessPanel);
         EventManager.OnGameStart.AddListener(HidePanel);
         Timer.OnTimeOut += InitializeLevelFailPanel;    //a big sus.
-        //EventManager.OnLevelFinish.AddListener(HidePanel);
-
     }
 
     private void OnDisable()
     {
-        //EventManager.OnLevelFail.RemoveListener(InitializeBlurPanel);
-        //EventManager.OnLevelSuccess.RemoveListener(InitializeBlurPanel);
-
         EventManager.OnLevelFail.RemoveListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.RemoveListener(InitializeLevelSuccessPanel);
         EventManager.OnGameStart.RemoveListener(HidePanel);
         Timer.OnTimeOut -= InitializeLevelFailPanel;
-        //EventManager.OnLevelFinish.RemoveListener(HidePanel);
-
-
     }
 
     private void InitializeLevelFailPanel()
@@ -57,10 +46,4 @@ public class GamePanel : Panel
         LevelFailPanel.HidePanel();
         ShowPanel();
     }
-
-    /*private void InitializeBlurPanel()
-    {
-        BlurPanel.ShowPanel();
-        ShowPanel();
-    }*/
 }

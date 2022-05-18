@@ -17,7 +17,6 @@ public class CelestialBody_purple : PlanetsBase
             if (PlanetCount == 0)
             {
                 EventManager.OnLevelSuccess.Invoke();
-                Debug.Log("count is  " + PlanetCount);
             }
         }
     }

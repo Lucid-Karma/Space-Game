@@ -12,7 +12,6 @@ public class Mars : PlanetsBase
     public override void UpdateScore()
     {
         point += 2;
-        Debug.Log( "mars");
         if(point >= 30)
             EventManager.OnScoreComplete.Invoke();
     }
