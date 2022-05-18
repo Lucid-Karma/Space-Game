@@ -25,29 +25,6 @@ public class GameManager : Singleton<GameManager>
         EventManager.OnGameEnd.Invoke();
     }
 
-/*
-    private void OnEnable()
-    {
-        EventManager.OnLevelFail.AddListener(StopGame);
-        EventManager.OnPlanetDestroy.AddListener(SlowMotion);
-    }
-    private void OnDisable()
-    {
-        EventManager.OnLevelFail.RemoveListener(StopGame); 
-        EventManager.OnPlanetDestroy.RemoveListener(SlowMotion);   
-    }
-
-    void StopGame()
-    {
-
-    }
-
-// make sth. to make time scale normal.
-    void SlowMotion()
-    {
-        Time.timeScale = 0.5f; //makes time scale 50% slower. 
-    }
-    */
 
     private void OnEnable()
     {

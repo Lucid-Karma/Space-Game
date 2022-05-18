@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     }
 	
     #region Movement
-        //[Range(5f, 215f)]
         public static float thrust = 5f; //Forward force.
         public float lift; //Up and down movement.
         public float yaw; //Rotate of z axis?
@@ -29,13 +28,6 @@ public class Player : MonoBehaviour
         private float activeLift, activeYaw, activeRoll, activePitch;
 
 
-        /*
-        public float activePitchMin, activePitchMax;
-        public float activeYawMin, activeYawMax;
-        public float activeRollMin, activeRollMax;
-        */
-
-        //private bool isLimitExceeded;
 
 
         //to draw the lines 
@@ -59,17 +51,17 @@ public class Player : MonoBehaviour
         public ParticleSystem boomFlash;
     #endregion
 
+    public static bool isLevelFailed;
+
     private void Awake() 
     {
-        cockpit = GameObject.Find("Camera1").GetComponent<Camera>();
+        cockpit = GameObject.Find("Camera1(cockpit)").GetComponent<Camera>();
 
         // Make both of bullets not active so they will not be visible if they are not empty object or have MeshRenderer.
         for (int i = 0; i < bulletCount; i++)
         {
             bullet[i].SetActive(false);
         }
-
-        //boomFlash.Stop();
 
          Physics.IgnoreLayerCollision(0, 7);
     }
@@ -78,14 +70,14 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnPreDestroy.AddListener(Kill);
-        EventManager.OnRestart.AddListener(ResetSpeed);
+        EventManager.OnRestart.AddListener(ResetSpeedAndBool);
         EventManager.OnCamera01On.AddListener(Invisible);
     }
 
     private void OnDisable()
     {
         EventManager.OnPreDestroy.RemoveListener(Kill);
-        EventManager.OnRestart.RemoveListener(ResetSpeed);
+        EventManager.OnRestart.RemoveListener(ResetSpeedAndBool);
         EventManager.OnCamera01On.RemoveListener(Invisible);
     }
 
@@ -119,9 +111,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void ResetSpeed()
+    void ResetSpeedAndBool()
     {
         thrust = 5f;
+        isLevelFailed = false;
     }
 
     void Invisible()
@@ -143,53 +136,17 @@ public class Player : MonoBehaviour
         else
             transform.Rotate(-activePitch, activeYaw, activeRoll, Space.Self);
 
-       /* 
-       activePitch = Mathf.Clamp(activePitch, activePitchMin, activePitchMax);
-       activeYaw = Mathf.Clamp(activeYaw, activeYawMin, activeYawMax);
-       activeRoll = Mathf.Clamp(activeRoll, activeRollMin, activeRollMax);
-       */
-       //Quaternion target = Quaternion.Euler(-activePitch, activeYaw, activeRoll);
-       //transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.fixedDeltaTime * pitch);
-       /*if(transform.rotation.x <= shipRange && transform.rotation.x >= -shipRange) 
-            transform.Rotate(-activePitch, activeYaw, -activeRoll, Space.Self);
-       else if(transform.rotation.x >= shipRange)
-       {
-           transform.Rotate(0f, activeYaw, -activeRoll, Space.Self);
-           Debug.Log(transform.rotation.x);
-       }
-            //transform.Rotate(shipRange, activeYaw, -activeRoll, Space.Self);
-       else if(transform.rotation.x <= -shipRange)
-       {
-           transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
-           Debug.Log(transform.rotation.x);
-       } */
-            //transform.Rotate(-shipRange, activeYaw, -activeRoll, Space.Self);
+
 
        if(Input.GetKey(KeyCode.LeftShift) && thrust <= 92.5f)
        {
-           //thrust = thrust + 2 * 8;
            thrust += 2.5f;
-
-           //isSpeedDown = true;
        }
        else if(thrust >= 8f && Input.GetKey(KeyCode.LeftShift) == false)
        {
             thrust -= 3f;
-
-            //isSpeedDown = false;
        }
 
-       //if(thrust >= 400f || Input.GetKeyUp(KeyCode.X))
-       /*if(Input.GetKey(KeyCode.LeftControl) && thrust >= 16.0f)
-       {
-           //if(thrust >= 16.0f)  thrust -= 15;
-           //thrust = thrust / 2f;
-           thrust -= 15;
-       }*/ 
-
-	   //Vector3 Posinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-	   
-	   //Rigidb.velocity = Posinput * MoveSpeed * Time.fixedDeltaTime; // velocity can cause problems in some case.
 
        WithinBoundary();
     }
@@ -235,10 +192,10 @@ public class Player : MonoBehaviour
     // If the ship hits something, calls the corresponding event
     private void OnCollisionEnter(Collision collision) 
     {
-        if(PlanetsBase.isLevelSuccessed == false && collision.gameObject.tag != "bullet")
+        if(PlanetsBase.isLevelSuccessed == false && collision.gameObject.tag != "bullet" && Timer.isTimeOut == false)
         {
+            isLevelFailed = true;
             EventManager.OnLevelFail.Invoke();
-            Debug.Log("Player Collision: " + collision.collider.name);
         }
     }
 }

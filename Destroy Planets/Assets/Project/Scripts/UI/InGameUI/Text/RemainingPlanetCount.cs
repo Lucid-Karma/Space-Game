@@ -21,13 +21,11 @@ public class RemainingPlanetCount : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnPlanetDestroy.AddListener(UpdatePlText);
-        //EventManager.OnGameStart.AddListener(RecreateScore);
     }
 
     private void OnDisable()
     {
         EventManager.OnPlanetDestroy.RemoveListener(UpdatePlText);
-        //EventManager.OnGameStart.RemoveListener(RecreateScore); 
     }
 
     public int planetCount = 0;

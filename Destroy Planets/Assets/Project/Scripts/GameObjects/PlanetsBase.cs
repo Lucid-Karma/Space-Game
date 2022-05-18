@@ -9,36 +9,13 @@ public abstract class PlanetsBase : MonoBehaviour
     public static int PlanetCount = 25;
     public static bool isLevelSuccessed = false;
 
-    /*private void OnEnable()
-    {
-        //EventManager.OnPlanetDestroy.AddListener(UpdateScore);
-        EventManager.OnPreDestroy.AddListener(OnCollisionEnter);
-    }
-
-    private void OnDisable()
-    {
-        //EventManager.OnPlanetDestroy.RemoveListener(UpdateScore);
-        EventManager.OnPreDestroy.RemoveListener(OnCollisionEnter);
-    }
-
-    public void OnSuccess()
-    {
-        UpdateScore();
-
-        PlanetCount -= 1;
-        if (PlanetCount == 0)
-        {
-            EventManager.OnLevelSuccess.Invoke();
-            Debug.Log("count is  " + PlanetCount);
-        }
-    }*/
 
     // Default point as +1 but still changable coz it's virtual.
     public virtual void UpdateScore() 
     {
         point++;
 
-        if(point >= 30)
+        if(point >= 29)
             EventManager.OnScoreComplete.Invoke();
     }
 
@@ -60,22 +37,17 @@ public abstract class PlanetsBase : MonoBehaviour
         if(collision.gameObject.tag == "bullet")
         {
             UpdateScore();
-            //UpdatePlanetCount();
+            
             PlanetCount -= 1;
-            Debug.Log(PlanetCount);
             if (PlanetCount == 0)
             {
                 EventManager.OnLevelSuccess.Invoke();
                 isLevelSuccessed = true;
-                Debug.Log("true");
             }
 
             EventManager.OnPlanetDestroy.Invoke();
 
             Destroy(gameObject);
-
-            Debug.Log(gameObject.name);
-            Debug.Log(collision.gameObject.name);
         }
     }
 

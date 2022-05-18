@@ -11,26 +11,14 @@ public class Earth : PlanetsBase
         
         if(collision.gameObject.tag == "bullet")
         {
-            //for(int i = 0; i < 4; i++)
-            //{
                 UpdateScore();
                 EventManager.OnPlanetDestroy.Invoke();
-            //}
-            /*
-            for(int j = 0; j < 4; j++)
-            {
-                earthFlash[j].Play();
-            }
-
-            Destroy(gameObject);
-            */
             
 
             PlanetCount -= 1;
             if (PlanetCount == 0)
             {
                 EventManager.OnLevelSuccess.Invoke();
-                Debug.Log("count is  " + PlanetCount);
             }
         }
     }
@@ -38,7 +26,6 @@ public class Earth : PlanetsBase
     public override void UpdateScore()
     {
         point += 10;
-        Debug.Log("earth");
         if(point >= 30)
             EventManager.OnScoreComplete.Invoke();
     }

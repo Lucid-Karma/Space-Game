@@ -30,7 +30,6 @@ public class GrenadeSound : MonoBehaviour
         if(soundCount % 2 != 0)
         {
             FindObjectOfType<AudioManager>().Stop("ShootingFX");
-            Debug.Log("stop");
         }        
         else if(soundCount % 2 == 0)     AudioManager.isSoundOn = true;
 

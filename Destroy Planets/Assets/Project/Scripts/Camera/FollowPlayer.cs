@@ -6,13 +6,10 @@ public class FollowPlayer : MonoBehaviour
 {
     public static FollowPlayer Instance { get; private set; }
 
-	// Takip edilecek obje
-	public Transform hedef;
+	public Transform target;
 
-	// Kamerayla hedef arasındaki istenen uzaklık (yükseklik farkını hesaba katmadan)
-	public float uzaklik = 6f;
-	// Kamerayla hedef arasındanki istenen yükseklik farkı
-	public float yukseklik = 5f;
+	public float distance = 6f;
+	public float elevation = 5f;
 
 	private void Awake()
 	{
@@ -27,18 +24,11 @@ public class FollowPlayer : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		// Kameranın gitmesi gereken pozisyon
-		Vector3 hedefKonum = hedef.position - hedef.forward * uzaklik + new Vector3( 0f, yukseklik, 0f );
+		Vector3 targetPosition = target.position - target.forward * distance + new Vector3( 0f, elevation, 0f );
 
-		// Player sahneden aşağı düşse de kamera belli bir y değerinin altına inmesin
-		//if( hedefKonum.y < yukseklik )
-			//hedefKonum.y = yukseklik;
+		transform.localPosition = Vector3.Slerp( transform.localPosition, targetPosition, 0.1f );
 
-		// Kamerayı hedefKonum'a doğru "yumuşak" bir şekilde hareket ettir
-		transform.localPosition = Vector3.Slerp( transform.localPosition, hedefKonum, 0.1f );
-
-		// Kamerayı "yumuşak" bir şekilde hedef'e doğru döndür
-		Quaternion rot = Quaternion.LookRotation( hedef.position - transform.localPosition );
+		Quaternion rot = Quaternion.LookRotation( target.position - transform.localPosition );
 		transform.localRotation = Quaternion.Slerp( transform.localRotation, rot, 0.1f );
 	}
 }

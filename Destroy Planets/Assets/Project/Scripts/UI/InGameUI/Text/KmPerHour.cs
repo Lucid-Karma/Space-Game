@@ -25,10 +25,7 @@ public class KmPerHour : MonoBehaviour
 
     private void UpdateKmText()
     {
-        //float oneMach = 1062.2f;
         float km = Player.thrust * 1062.2f;
-        //float basemach = mach * Time.fixedDeltaTime;
-        //ScoreText.text = "mach " + mach + player.position.z.ToString("0");
         KMText.text = km.ToString("0") + " KM/H";
     }
 }

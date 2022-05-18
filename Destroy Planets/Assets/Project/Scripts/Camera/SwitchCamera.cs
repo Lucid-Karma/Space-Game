@@ -23,8 +23,6 @@ public class SwitchCamera : MonoBehaviour
 
     public void changeView()
     {
-        //if(Input.GetKeyDown("space"))
-        //{
             cameras[anchor].enabled = false; // Disable main camera when pressed space. Will represent the second camera next time
             camAudio[anchor].enabled = false;
             anchor++;
@@ -38,6 +36,5 @@ public class SwitchCamera : MonoBehaviour
 
             if(cameras[1].enabled)  EventManager.OnCamera01On.Invoke();
             else    EventManager.OnCamera00On.Invoke();
-        //}
     }
 }
