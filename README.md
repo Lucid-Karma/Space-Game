@@ -1,18 +1,43 @@
-# Space-Game
-This is gonna be my fun for NASA Space Apps Challenge 2021 
+# Universe Shooter
+
+
+![Start](https://user-images.githubusercontent.com/88732917/175809825-669a9137-6388-4a42-9802-9c7383322b0b.png)
+
+
+
+You are a shooter in the universe and your aim is to destroy 25 planets before time runs out.
 ...
 ...
 ...
 ...
 ...
-How it's gonna be made is;
-
--First thing first there will be several circles to represent planets in a scene full of stars and stuff for the rest of the visible universe and this part will be a picture only.-the part of stars etc. not planets-
-
--There will be an main charachter in a confined space and this space is gonna be our spaceship.
-
--All these stuffs are gonna be ina large box and this box is gonna be the game's environment.
-
--For now I think like main charachter will never move but the rest of the environmet do.
 
 
+
+
+Play it here: https://m1rr0r.itch.io/universe-shooter
+
+How to play:
+
+-WASD for standard movements of space ship.
+
+-Left and Right keys to roll the space ship.
+
+-Left Shift to speed up.
+
+-Your mouse to shoot.
+
+
+You can only shoot when the crosshair arrives and it only arrives when you use the Change Camera button. When you see it, take aim and click wherever you want on the screen.
+Time is limited. To complete the task get 30 points and have 30 more seconds.
+
+
+![Ekran Görüntüsü (101)](https://user-images.githubusercontent.com/88732917/175809726-c1fd4452-a326-4926-aa9d-ab9bb25f5a2e.png)
+
+
+
+![Ekran Görüntüsü (103)](https://user-images.githubusercontent.com/88732917/175809747-a38c7759-676b-4800-a732-413fe708f289.png)
+
+
+
+![Ekran Görüntüsü (100)](https://user-images.githubusercontent.com/88732917/175809799-631f07ee-be54-4b15-8c74-96fd6c8d4a3b.png)
